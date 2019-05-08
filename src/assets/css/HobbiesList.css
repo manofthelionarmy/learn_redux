@@ -1,0 +1,56 @@
+.list {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 80%; 
+    margin-top: 5em; 
+}
+
+.list > h1 > span {
+    float: right; 
+}
+
+.list > h1 > span > button {
+    background-color: white; 
+    border: 0; 
+    font-weight: bold; 
+    font-size: 24px; 
+}
+
+.list > h1 > span > button:hover {
+    border: 1px solid gainsboro; 
+     
+}
+
+.list-group {
+    display: inline-block; 
+    width: 100%; 
+}
+
+.list-item {
+    display: block; 
+    font-size: 20px; 
+    padding: 10px; 
+    border-bottom: 2px solid gainsboro; 
+}
+
+.list-item:last-child {
+    border-bottom: 0; 
+}
+
+.list-item > span {
+    float: right;
+}
+
+.list-item:hover {
+    color: royalblue; 
+    background-color: aliceblue; 
+}
+
+.list-item > span > button {
+    background-color: transparent; 
+    border: none; 
+}
+
+.list-item > span > button:hover {
+    color: royalblue;
+}
