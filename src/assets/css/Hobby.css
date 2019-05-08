@@ -1,0 +1,32 @@
+#edit:hover {
+    color: darkgreen; 
+}
+
+#remove:hover {
+    color: red; 
+}
+
+.list-item {
+    display: block; 
+    font-size: 20px; 
+    padding: 10px; 
+    border-bottom: 2px solid gainsboro; 
+}
+
+.list-item:last-child {
+    border-bottom: 0; 
+}
+
+.list-item > span {
+    float: right;
+}
+
+.list-item:hover {
+    color: royalblue; 
+    background-color: aliceblue; 
+}
+
+.list-item > span > button {
+    background-color: transparent; 
+    border: none; 
+}

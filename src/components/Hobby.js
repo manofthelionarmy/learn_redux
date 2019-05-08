@@ -2,8 +2,9 @@
 import React from 'react';
 import Edit from '@material-ui/icons/Edit';
 import Remove from '@material-ui/icons/Remove';
+import '../assets/css/Hobby.css';
 
-class Hobbies extends React.Component {
+class Hobby extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,16 +17,14 @@ class Hobbies extends React.Component {
     
     render() {
 
-        
-
         return (
             <React.Fragment>
                 <li className="list-item">{this.props.name} likes {this.props.hobby}
                     <span>
-                        <button>
+                        <button id="edit">
                             <Edit />
                         </button>
-                        <button>
+                        <button id="remove">
                             <Remove />
                         </button>
                     </span>
@@ -35,4 +34,4 @@ class Hobbies extends React.Component {
     }
 }
 
-export default Hobbies; 
+export default Hobby; 

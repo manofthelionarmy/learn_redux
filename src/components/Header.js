@@ -8,7 +8,7 @@ const Header = function(props) {
     return (
         <div>
             <nav className="navbar">
-                <h1>hobbies</h1>
+                <h1>{'{React.hobbies}'}</h1>
             </nav>
         </div>
     ); 
