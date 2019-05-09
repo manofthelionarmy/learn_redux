@@ -1,5 +1,5 @@
 #edit:hover {
-    color: darkgreen; 
+    color:rgb(176, 112, 218); 
 }
 
 #remove:hover {
@@ -29,4 +29,18 @@
 .list-item > span > button {
     background-color: transparent; 
     border: none; 
+}
+
+.edit-form {
+    display: inline;
+}
+
+.edit-form > button {
+     
+    border: none; 
+    border-radius: 0.2em; 
+    padding: 0.3em; 
+    margin-left: 5px; 
+    background-color: rgb(176, 112, 218); 
+    color: white; 
 }
