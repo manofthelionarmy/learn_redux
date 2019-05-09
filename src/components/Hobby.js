@@ -4,7 +4,7 @@ import Edit from '@material-ui/icons/Edit';
 import Remove from '@material-ui/icons/Remove';
 import '../assets/css/Hobby.css';
 
-
+import EditForm from './EditForm';
 class Hobby extends React.Component {
 
     constructor(props) {
@@ -12,17 +12,15 @@ class Hobby extends React.Component {
 
         this.state = {
             showEditForm: false,
-            name: this.props.name,
-            hobby: this.props.hobby
         }
 
         this.edit = this.edit.bind(this); 
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
+        this.finishEdit = this.finishEdit.bind(this);
+        // this.onChange = this.onChange.bind(this);
     }
 
     edit() {
-        // this will toggle the showEdit Form
+        // this will toggle the showEdit variable in state for this component
         if(this.state.showEditForm) {
             this.setState({
                 showEditForm: false
@@ -34,38 +32,62 @@ class Hobby extends React.Component {
         }
     }
 
-    onChange(e) {
+   
+    // TODO: reset the form when either edit button or form submit button click happens
+    /*reset() {
 
-        this.setState({
-            showEditForm: this.state.showEditForm,
-            [e.target.name]: e.target.value
-        });
-
-    }
+    }*/
  
-    onSubmit(e) {
-        e.preventDefault();
-        
-        
-        // TODO: modify the hobby at the source of truth
-        
+    finishEdit(hobby) {
+            
+        // Re-render once the form has been submitted 
         this.setState({
-            showEditForm: false,
-            name: this.props.name,
-            hobby: this.props.hobby
+            showEditForm: false 
         });
+
+        // Call the edit function in HobbiesList.js and pass the hobby json object passed from EditForm.js
+        this.props.edit(hobby); 
+    }
+
+
+    addingItem() {
+        return (
+            <React.Fragment>
+                <li className="list-item">
+
+                    <EditForm
+                        _id={this.props._id}
+                        name={this.props.name}
+                        hobby={this.props.hobby}
+                        finishEdit={(hobby) => this.finishEdit(hobby)}
+                    />
+
+                    <span>
+                        {/**We want to render the button for consistency, but remove the onClick functionality and make it grey*/}
+                        <button id="cannot-click">
+                            <Edit />
+                        </button>
+                        <button id="remove" onClick={() => this.props.remove()}>
+                            <Remove />
+                        </button>
+                    </span>
+                </li>
+            </React.Fragment>
+        )
     }
 
     showEditForm() {
         return (
             <React.Fragment>
                 <li className="list-item">
-                    <form className="edit-form" onSubmit={this.onSubmit}>
-                        <input name="name" value={this.state.name} placeholder={this.props.name} onChange={this.onChange}></input>
-                        likes
-                        <input name="hobby" value={this.state.hobby} placeholder={this.props.hobby} onChange={this.onChange}></input>
-                        <button type="submit">Enter</button>
-                    </form>
+
+                    <EditForm 
+                        _id = {this.props._id}
+                        name={this.props.name}
+                        hobby={this.props.hobby}
+                        finishEdit = {(hobby) => this.finishEdit(hobby)}
+                    />
+                    
                     <span>
                         <button id="edit" onClick={() => this.edit()}>
                             <Edit />
@@ -98,10 +120,14 @@ class Hobby extends React.Component {
 
     render() {
 
+        if (this.props.name === '' && this.props.hobby === '') {
+            return this.addingItem(); 
+        }
+
         if (this.state.showEditForm) {
-            return (this.showEditForm());
+            return this.showEditForm();
         } else {
-            return (this.doNotShowEditForm());
+            return this.doNotShowEditForm();
         }
     }
 }

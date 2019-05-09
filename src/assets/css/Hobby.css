@@ -6,6 +6,10 @@
     color: red; 
 }
 
+#cannot-click {
+    color: grey; 
+}
+
 .list-item {
     display: block; 
     font-size: 20px; 
@@ -39,8 +43,12 @@
      
     border: none; 
     border-radius: 0.2em; 
-    padding: 0.3em; 
+    padding: 0.25em; 
     margin-left: 5px; 
     background-color: rgb(176, 112, 218); 
     color: white; 
+}
+
+.list-item > p {
+    
 }
