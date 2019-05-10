@@ -83,9 +83,11 @@ class HobbiesList extends React.Component {
             />
         })
 
+        const star = `\u{2B50}`;
+
         return (
             <div className="list">
-                <h1>Hobby list
+                <h1>{star}Hobby list{star}
                     <span>
                         <button onClick={this.addItem}>
                             <Add />
@@ -100,9 +102,12 @@ class HobbiesList extends React.Component {
     }
 
     renderInstructions() {
+
+        const star = `\u{2B50}`;
+        
         return (
             <div className="list">
-                <h1>Hobby list
+                <h1>{star}Hobby list{star}
                     <span>
                         <button onClick={this.addItem}>
                             <Add />
@@ -110,11 +115,11 @@ class HobbiesList extends React.Component {
                     </span>
                 </h1>
                 <ul className="list-group">
-                    <li className="list-item">
-                        <h2>Instructions</h2>
+                    <li className="list-item" id="instructions">
+                        <h2>Instructions:</h2>
                         <p><i>Begin by clicking the '<b>+</b>' button. Proceed by entering a name of a person and enter one of their hobbies.
                               Once you have finished entering the information, click enter to add the hobby to the list. If you wish to edit
-                              the information of any hobby you added to list, click the pencil icon. If you wish to remove the item, click the
+                              the information of any hobby you added to the list, click the pencil icon. If you wish to remove the item, click the
                               '<b>-</b>' button. Enjoy!
                         </i></p>
                     </li>

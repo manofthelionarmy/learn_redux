@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HobbiesForm from './HobbiesForm';
+//import HobbiesForm from './HobbiesForm';
 import HobbiesList from './HobbiesList'; 
 
 
@@ -77,7 +77,7 @@ class Hobbies extends React.Component {
 
         const h = this.state.hobbies; 
 
-        // it's because the last item is always going to be 4, according to our mock datat (we have 4 entries). 
+        // it's because the last item is always going to be 4, according to our mock data (we have 4 entries). 
         // When we add a new item, the new id is at the top of the array, because we are unshifting. So, it works like a stack
         // My mock data works like a queue, and I'm implementing unshift which will make it work like a stack 
         let new_id = 0; 

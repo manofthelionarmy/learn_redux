@@ -18,6 +18,7 @@ class EditForm extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
+        //if we hit enter with blank items, we'll just use the initial data
         const hobby = {
             id: this.state.id,
             name: (this.state.name !== '') ? this.state.name : this.props.name,

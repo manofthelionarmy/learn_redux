@@ -33,11 +33,6 @@ class Hobby extends React.Component {
     }
 
    
-    // TODO: reset the form when either edit button or form submit button click happens
-    /*reset() {
-
-    }*/
- 
     finishEdit(hobby) {
             
         // Re-render once the form has been submitted 
