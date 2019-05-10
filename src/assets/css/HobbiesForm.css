@@ -1,0 +1,45 @@
+.card {
+    margin-top: 5em; 
+    margin-left: auto; 
+    margin-right: auto; 
+    box-shadow: 0em 1em 1em 0.3em gainsboro; 
+    background-color: white; 
+    padding: 6em; 
+    border-radius: 0.5em; 
+    width: 30%; 
+}
+
+.card > form > label {
+    font-size: 12px; 
+    color: black; 
+    font-weight: bold; 
+}
+
+.card > form > input {
+    width: 100%; 
+    padding-bottom: 0.5em; 
+    height: 1.2em; 
+    border-bottom: 1px solid;
+    border-left: none; 
+    border-right: none; 
+    border-top: none; 
+
+    font-size: 16px; 
+}
+
+.card > form > input:hover, .card > from > input:focus {
+    border-bottom: 2px solid royalblue;
+}
+
+
+.card > form > hr {
+    color: aliceblue; 
+}
+
+.card > form > button {
+    background-color: royalblue; 
+    border: 1px solid black; 
+    border-radius: 0.2em; 
+    color: white; 
+    padding: 0.3em; 
+}

@@ -1,0 +1,50 @@
+#edit:hover {
+    color:rgb(176, 112, 218); 
+}
+
+#remove:hover {
+    color: red; 
+}
+
+#cannot-click {
+    color: grey; 
+}
+
+.list-item {
+    display: block; 
+    font-size: 20px; 
+    padding: 10px; 
+    border-bottom: 2px solid gainsboro; 
+}
+
+.list-item:last-child {
+    border-bottom: 0; 
+}
+
+.list-item > span {
+    float: right;
+}
+
+.list-item:hover {
+    color: royalblue; 
+    background-color: aliceblue; 
+}
+
+.list-item > span > button {
+    background-color: transparent; 
+    border: none; 
+}
+
+.edit-form {
+    display: inline;
+}
+
+.edit-form > button {
+     
+    border: none; 
+    border-radius: 0.2em; 
+    padding: 0.25em; 
+    margin-left: 5px; 
+    background-color: rgb(176, 112, 218); 
+    color: white; 
+}
