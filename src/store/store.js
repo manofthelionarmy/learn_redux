@@ -12,7 +12,10 @@ import reactHobbies from '../reducers';
 
 // import {addItem, readItem, editItem, removeItem} from '../actions/hobbyActions';
 
-const store = createStore(reactHobbies);
+const store = createStore(
+    reactHobbies,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store; 
 

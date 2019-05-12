@@ -18,44 +18,7 @@ class HobbiesList extends React.Component {
         super(props);
 
         this.isListEmpty = this.isListEmpty.bind(this); 
-        // this.addItem = this.addItem.bind(this); 
     }
-
-
-    /*remove(id) {
-        
-        // Calling remove from Hobbies
-        this.props.removeItem(id); 
-
-        // call this after we remove the item
-        // this.isListEmpty();
-    }
-
-    edit(hobby) {
-        // call the edit function in Hobbies.js and pass the hobby json object from HobbiesList.js
-        this.props.editItem(hobby); 
-    }
-
-    addItem(e) {
-        e.preventDefault(); 
-
-        
-        // this.props.hobbies is not in sync with the updated hobbies in the state
-        // it is just a copy... 
-        // We need to subsribe to the change in the state .... 
-        // Don't update the id here, update it where the acutal state is!! 
-        // const new_id = this.props.hobbies[this.props.hobbies.length - 1].id + 1; 
-        const h = {
-            name: '',
-            hobby: ''
-        };
-
-        // need to call the props
-        // this.props.addItem(h); 
-
-        // No longer need this function
-        // this.isListEmpty();
-    }*/
 
     isListEmpty() {
 

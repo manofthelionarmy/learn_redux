@@ -5,11 +5,6 @@ import Remove from '@material-ui/icons/Remove';
 import '../assets/css/Hobby.css';
 import SubmitEditForm from '../containers/SubmitEditForm';
 
-
-import EditForm from './EditForm';
-import {removeItem} from '../actions/hobbyActions';
-import {connect} from 'react-redux'
-
 // This is kinda like a Presentational Component. It also has the responsiblity for toggling on and off the EditForm, and removing items
 class Hobby extends React.Component {
 
@@ -135,4 +130,4 @@ class Hobby extends React.Component {
 
 
 
-export default connect(null, {removeItem}) (Hobby); 
+export default Hobby; 
