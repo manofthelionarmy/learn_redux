@@ -3,8 +3,14 @@ import React from 'react';
 import Edit from '@material-ui/icons/Edit';
 import Remove from '@material-ui/icons/Remove';
 import '../assets/css/Hobby.css';
+import SubmitEditForm from '../containers/SubmitEditForm';
+
 
 import EditForm from './EditForm';
+import {removeItem} from '../actions/hobbyActions';
+import {connect} from 'react-redux'
+
+// This is kinda like a Presentational Component. It also has the responsiblity for toggling on and off the EditForm, and removing items
 class Hobby extends React.Component {
 
     constructor(props) {
@@ -14,12 +20,12 @@ class Hobby extends React.Component {
             showEditForm: false,
         }
 
-        this.edit = this.edit.bind(this); 
+        this.toggleEditForm = this.toggleEditForm.bind(this); 
         this.finishEdit = this.finishEdit.bind(this);
         // this.onChange = this.onChange.bind(this);
     }
 
-    edit() {
+    toggleEditForm() {
         // this will toggle the showEdit variable in state for this component
         if(this.state.showEditForm) {
             this.setState({
@@ -33,15 +39,15 @@ class Hobby extends React.Component {
     }
 
    
-    finishEdit(hobby) {
+    finishEdit() {
             
         // Re-render once the form has been submitted 
         this.setState({
             showEditForm: false 
         });
 
-        // Call the edit function in HobbiesList.js and pass the hobby json object passed from EditForm.js
-        this.props.edit(hobby); 
+        // Need to dispatch EDIT_ITEM action
+        // this.props.edit(hobby); 
     }
 
 
@@ -50,11 +56,11 @@ class Hobby extends React.Component {
             <React.Fragment>
                 <li className="list-item">
 
-                    <EditForm
+                    <SubmitEditForm
                         _id={this.props._id}
                         name={this.props.name}
                         hobby={this.props.hobby}
-                        finishEdit={(hobby) => this.finishEdit(hobby)}
+                        finishEdit={() => this.finishEdit()}
                     />
 
                     <span>
@@ -62,7 +68,7 @@ class Hobby extends React.Component {
                         <button id="cannot-click">
                             <Edit />
                         </button>
-                        <button id="remove" onClick={() => this.props.remove()}>
+                        <button id="remove" onClick={() => this.props.removeItem(this.props._id)}>
                             <Remove />
                         </button>
                     </span>
@@ -76,18 +82,18 @@ class Hobby extends React.Component {
             <React.Fragment>
                 <li className="list-item">
 
-                    <EditForm 
+                    <SubmitEditForm 
                         _id = {this.props._id}
                         name={this.props.name}
                         hobby={this.props.hobby}
-                        finishEdit = {(hobby) => this.finishEdit(hobby)}
+                        finishEdit = {() => this.finishEdit()}
                     />
                     
                     <span>
-                        <button id="edit" onClick={() => this.edit()}>
+                        <button id="edit" onClick={() => this.toggleEditForm()}>
                             <Edit />
                         </button>
-                        <button id="remove" onClick={() => this.props.remove()}>
+                        <button id="remove" onClick={() => this.props.removeItem(this.props._id)}>
                             <Remove />
                         </button>
                     </span>
@@ -101,10 +107,10 @@ class Hobby extends React.Component {
             <React.Fragment>
                 <li className="list-item">{this.props.name} likes {this.props.hobby}
                     <span>
-                        <button id="edit" onClick={() => this.edit()}>
+                        <button id="edit" onClick={() => this.toggleEditForm()}>
                             <Edit />
                         </button>
-                        <button id="remove" onClick={() => this.props.remove()}>
+                        <button id="remove" onClick={() => this.props.removeItem(this.props._id)}>
                             <Remove />
                         </button>
                     </span>
@@ -127,4 +133,6 @@ class Hobby extends React.Component {
     }
 }
 
-export default Hobby; 
+
+
+export default connect(null, {removeItem}) (Hobby); 

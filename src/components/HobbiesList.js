@@ -1,40 +1,39 @@
-// will display list, but will also have 3 other features: edit, add, and remove
 import React from 'react';
 import '../assets/css/HobbiesList.css';
-import Hobby from './Hobby'
+import RemoveItem from '../containers/RemoveItem';
 
 import Add from '@material-ui/icons/Add';
+
+// import {connect} from 'react-redux';
+
+// import { addItem } from '../actions/hobbyActions';
+
+/**This is a presenter. Therefore, this will only present the list. 
+ * The '+' button is part of this component, so we'll keep addItem function
+*/
 
 class HobbiesList extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.remove = this.remove.bind(this); 
-        this.edit = this.edit.bind(this); 
-
-        this.addItem = this.addItem.bind(this);
-
         this.isListEmpty = this.isListEmpty.bind(this); 
-
-        this.state = {
-            listIsEmpty: true
-        }
+        // this.addItem = this.addItem.bind(this); 
     }
 
 
-    remove(id) {
+    /*remove(id) {
         
         // Calling remove from Hobbies
-        this.props.remove(id); 
+        this.props.removeItem(id); 
 
         // call this after we remove the item
-        this.isListEmpty();
+        // this.isListEmpty();
     }
 
     edit(hobby) {
         // call the edit function in Hobbies.js and pass the hobby json object from HobbiesList.js
-        this.props.edit(hobby); 
+        this.props.editItem(hobby); 
     }
 
     addItem(e) {
@@ -49,37 +48,28 @@ class HobbiesList extends React.Component {
         const h = {
             name: '',
             hobby: ''
-        }; 
+        };
 
         // need to call the props
-        this.props.addItem(h); 
+        // this.props.addItem(h); 
 
-        // call this after we add the item to hobbies in Hobbies.js
-        this.isListEmpty();
-    }
+        // No longer need this function
+        // this.isListEmpty();
+    }*/
 
     isListEmpty() {
 
-        if(this.props.hobbies.length === 0) {
-            this.setState({
-                listIsEmpty: true
-            });
-        } else {
-            this.setState({
-                listIsEmpty: false 
-            })
-        }
+        return this.props.hobbies.length === 0; 
     }
 
     renderList() {
+        
         const listItems = this.props.hobbies.map((h) => {
-            return <Hobby
+            return <RemoveItem
                 key={h.id}
                 _id={h.id}
                 name={h.name}
                 hobby={h.hobby}
-                remove={() => this.remove(h.id)}
-                edit={(hobby) => this.edit(hobby)}
             />
         })
 
@@ -89,7 +79,10 @@ class HobbiesList extends React.Component {
             <div className="list">
                 <h1>{star}Hobby list{star}
                     <span>
-                        <button onClick={this.addItem}>
+                        <button onClick={() => this.props.addHobby({
+                            name: '',
+                            hobby: ''
+                        })}>
                             <Add />
                         </button>
                     </span>
@@ -109,7 +102,10 @@ class HobbiesList extends React.Component {
             <div className="list">
                 <h1>{star}Hobby list{star}
                     <span>
-                        <button onClick={this.addItem}>
+                        <button onClick={() => this.props.addHobby({
+                            name: '',
+                            hobby: ''
+                        })}>
                             <Add />
                         </button>
                     </span>
@@ -132,7 +128,7 @@ class HobbiesList extends React.Component {
     
     render() {
         
-        if(this.state.listIsEmpty) {
+        if(this.isListEmpty()) {
             return this.renderInstructions();
         } else {
             return this.renderList();

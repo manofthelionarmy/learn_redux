@@ -24,9 +24,13 @@ class EditForm extends React.Component {
             name: (this.state.name !== '') ? this.state.name : this.props.name,
             hobby: (this.state.hobby !== '') ? this.state.hobby : this.props.hobby
         }
-        
+
         // call finishEdit in Hobby.js and pass the hobby json object
-        this.props.finishEdit(hobby); 
+        // This is properly editing the item 
+        this.props.editItem(hobby); 
+
+        // need to singal that the form was completed
+        this.props.finishEdit();
     }
 
     onChange(e) {
@@ -44,7 +48,7 @@ class EditForm extends React.Component {
             <React.Fragment>
                 <form className="edit-form" onSubmit={this.onSubmit}>
                     <input name="name" value={this.state.name} placeholder={this.props.name ? this.props.name : 'Enter name'} onChange={this.onChange}></input>
-                    likes
+                    {' '}likes{' '}
                     <input name="hobby" value={this.state.hobby} placeholder={this.props.hobby ? this.props.hobby : 'Enter hobby'} onChange={this.onChange}></input>
                     <button type="submit">Enter</button>
                 </form>
@@ -53,5 +57,6 @@ class EditForm extends React.Component {
     }
 
 }
+
 
 export default EditForm; 
